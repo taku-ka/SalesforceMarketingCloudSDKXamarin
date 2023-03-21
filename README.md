@@ -1,5 +1,5 @@
 # SalesforceMarketingCloudSDKXamarin
- marketingcloudsdk-7.4.2
+ marketingcloudsdk-7.4.4
  
  How to init 
  Droid:
