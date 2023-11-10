@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}</ProjectGuid>
+    <TemplateGuid>{b6f3ff35-79b2-4f25-a2fc-60a7cf61013b}</TemplateGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SFMCiOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>SFMCiOS</AssemblyName>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>portable</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingCoreSource Include="Structs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <NativeReference Include="MarketingCloudSDK.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <LinkerFlags>-ObjC</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="SFMCSDK.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <LinkerFlags>-ObjC</LinkerFlags>
+    </NativeReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCEventConfigurationEntity+CoreDataClass.h" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCEndpointConfigurationEntity+CoreDataProperties.h" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCEventConfigurationEntity+CoreDataProperties.h" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCEndpointConfigurationEntity+CoreDataClass.h" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCConfigurationEntity+CoreDataClass.h" />
+    <BundleResource Include="MarketingCloudSDK.bundle\Assets.car" />
+    <BundleResource Include="MarketingCloudSDK.bundle\Info.plist" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel+CoreDataModel.h" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCConfigurationEntity+CoreDataProperties.h" />
+    <BundleResource Include="MarketingCloudSDK.bundle\_CodeSignature\CodeResources" />
+    <BundleResource Include="MarketingCloudSDK.bundle\_CodeSignature\CodeDirectory" />
+    <BundleResource Include="MarketingCloudSDK.bundle\_CodeSignature\CodeRequirements-1" />
+    <BundleResource Include="MarketingCloudSDK.bundle\_CodeSignature\CodeSignature" />
+    <BundleResource Include="MarketingCloudSDK.bundle\_CodeSignature\CodeRequirements" />
+    <BundleResource Include="MarketingCloudSDK.bundle\en.lproj\MarketingCloudSDK.strings" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\VersionInfo.plist" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\219.02.mom" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\219.01.mom" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\240.00.mom" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\215.00.mom" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\240.01.mom" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\219.00.mom" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\234.00.mom" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\240.01.omo" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\SFMCModel.mom" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\216.03.mom" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\216.02.mom" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\216.00.mom" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\216.01.mom" />
+    <BundleResource Include="MarketingCloudSDK.bundle\SFMCModel.momd\214.00.mom" />
+    <BundleResource Include="MarketingCloudSDK.bundle\InAppMessageUI.storyboardc\InAppMessageUIViewController.nib" />
+    <BundleResource Include="MarketingCloudSDK.bundle\InAppMessageUI.storyboardc\P8f-fg-jwy-view-Xyz-2s-9Ez.nib" />
+    <BundleResource Include="MarketingCloudSDK.bundle\InAppMessageUI.storyboardc\Info.plist" />
+  </ItemGroup>
+  <PropertyGroup>
+		<NoBindingEmbedding>true</NoBindingEmbedding>
+	</PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
+</Project>

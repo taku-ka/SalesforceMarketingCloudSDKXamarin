@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<remove-node path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='c']/field[@name='c']" />
+	<!--We're de-obfuscating those classes because they're publicly inherited by public SDK members.-->
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='a']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='b']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='c']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='d']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='e']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='f']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='g']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='h']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='i']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='j']" name="obfuscated">false</attr>
+	<!--We're renaming those obfuscated classes because they're conflicting with namespaces of the same name-->
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='a']" name="managedName">AA</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='b']" name="managedName">BB</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='c']" name="managedName">CC</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='d']" name="managedName">DD</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='e']" name="managedName">EE</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='f']" name="managedName">FF</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='g']" name="managedName">GG</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='h']" name="managedName">HH</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='i']" name="managedName">II</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='j']" name="managedName">JJ</attr>
+	<!--This one is required because public class "MarketingCloundSDK" inherits from class "d.b"-->
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='d.b']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.d']/class[@name='d']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.d']/class[@name='f']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='InitializationStatus.a']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.notifications']/interface[@name='NotificationManager.a']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.analytics']/interface[@name='n']" name="obfuscated">false</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.messages.inbox']/class[@name='InboxMessage']/method[@name='-deleted' and count(parameter)=1 and parameter[1][@type='boolean']]" name="managedName">deleted</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.messages']/class[@name='Region']/method[@name='compareTo' and count(parameter)=1 and parameter[1][@type='com.salesforce.marketingcloud.messages.Region']]/parameter[1]" name="managedType">Java.Lang.Object</attr>
+	<remove-node path="/api/package[@name='com.salesforce.marketingcloud.messages.proximity']/class[@name='ProximityMessageResponse']/method[@name='-deprecated_refreshCenter' and count(parameter)=0]" />
+	<remove-node path="/api/package[@name='com.salesforce.marketingcloud.messages.proximity']/class[@name='ProximityMessageResponse']/method[@name='-deprecated_refreshRadius' and count(parameter)=0]" />
+	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='i']/method[@name='customPropertiesToJson' and count(parameter)=1 and parameter[1][@type='java.util.Map&lt;java.lang.String, ? extends java.lang.Object&gt;']]" name="managedName">customPropertiesToJsonLocal</attr>
+	<!-- Visibility -->
+	<!--
+  Public methods annotated with @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY}) are equivalent to internal methods but are generated as public.
+  Those methods are not part of the public API so it's better to hide them to keep the API clean.
+  -->
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.d']/class[@name='d']" name="visibility">public</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.notifications']/class[@name='NotificationManager']/method[@name='a' and count(parameter)=2 and parameter[1][@type='com.salesforce.marketingcloud.notifications.NotificationMessage'] and parameter[2][@type='com.salesforce.marketingcloud.notifications.NotificationManager.a']]" name="visibility">internal</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.notifications']/class[@name='NotificationManager']/method[@name='a' and count(parameter)=10 and parameter[1][@type='android.content.Context'] and parameter[2][@type='com.salesforce.marketingcloud.d.f'] and parameter[3][@type='java.lang.Class&lt;? extends android.app.Activity&gt;'] and parameter[4][@type='java.lang.Class&lt;? extends android.app.Activity&gt;'] and parameter[5][@type='java.lang.Class&lt;? extends android.app.Activity&gt;'] and parameter[6][@type='int'] and parameter[7][@type='java.lang.String'] and parameter[8][@type='com.salesforce.marketingcloud.notifications.NotificationManager.NotificationLaunchIntentProvider'] and parameter[9][@type='com.salesforce.marketingcloud.notifications.NotificationManager.NotificationBuilder'] and parameter[10][@type='com.salesforce.marketingcloud.analytics.n']]" name="visibility">internal</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.messages']/class[@name='RegionMessageManager']/method[@name='a' and count(parameter)=1 and parameter[1][@type='android.location.Location']]" name="visibility">internal</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.messages']/class[@name='RegionMessageManager']/method[@name='a' and count(parameter)=1 and parameter[1][@type='com.salesforce.marketingcloud.messages.MessageResponse']]" name="visibility">internal</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.messages']/class[@name='RegionMessageManager']/method[@name='a' and count(parameter)=2 and parameter[1][@type='com.salesforce.marketingcloud.messages.Region'] and parameter[2][@type='com.salesforce.marketingcloud.messages.Message']]" name="visibility">internal</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.messages']/class[@name='RegionMessageManager']/method[@name='a' and count(parameter)=1 and parameter[1][@type='int']]" name="visibility">internal</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.messages']/class[@name='RegionMessageManager']/method[@name='a' and count(parameter)=2 and parameter[1][@type='int'] and parameter[2][@type='java.lang.String']]" name="visibility">internal</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.messages']/class[@name='RegionMessageManager']/method[@name='a' and count(parameter)=2 and parameter[1][@type='java.lang.String'] and parameter[2][@type='int']]" name="visibility">internal</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.registration']/class[@name='RegistrationManager']/method[@name='a' and count(parameter)=1 and parameter[1][@type='com.salesforce.marketingcloud.d.f']]" name="visibility">internal</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.registration']/class[@name='RegistrationManager']/method[@name='a' and count(parameter)=1 and parameter[1][@type='com.salesforce.marketingcloud.registration.Registration']]" name="visibility">internal</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.registration']/class[@name='RegistrationManager']/method[@name='d' and count(parameter)=0]" name="visibility">internal</attr>
+	<!-- Salesforce -->
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.sfmcsdk.components.http']/class[@name='Response.Creator']/method[@name='createFromParcel' and count(parameter)=1 and parameter[1][@type='android.os.Parcel']]" name="managedReturn">Java.Lang.Object</attr>
+	<attr path="/api/package[@name='com.salesforce.marketingcloud.sfmcsdk.components.http']/class[@name='Response.Creator']/method[@name='newArray' and count(parameter)=1 and parameter[1][@type='int']]" name="managedReturn">Java.Lang.Object[]</attr>
+	<!--<attr path="/api/package[@name='com.salesforce.marketingcloud.sfmcsdk']/class[@name='SFMCSdk']/method[@name='configure' and count(parameter)=3 and parameter[1][@type='android.content.Context'] and parameter[2][@type='com.salesforce.marketingcloud.sfmcsdk.SFMCSdkModuleConfig'] and parameter[3][@type='kotlin.jvm.functions.Function1<? super com.salesforce.marketingcloud.sfmcsdk.InitializationStatus, kotlin.Unit>']]/parameter[3]" name="managedType">Java.Lang.Object[]</attr>-->
+</metadata>

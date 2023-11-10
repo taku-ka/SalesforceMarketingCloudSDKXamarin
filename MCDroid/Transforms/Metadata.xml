@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<metadata>
-	<attr path="/api/package[@name='com.salesforce.marketingcloud.messages.inbox']/class[@name='InboxMessage']/method[@name='-deleted' and count(parameter)=1 and parameter[1][@type='boolean']]" name="managedName">Deleted</attr>
-	<attr path="/api/package[@name='com.salesforce.marketingcloud']/class[@name='MarketingCloudSdk']" name="extends">Java.Lang.Object</attr>
-	<attr path="/api/package[@name='com.salesforce.marketingcloud.messages']/class[@name='Region']/method[@name='compareTo' and count(parameter)=1 and parameter[1][@type='com.salesforce.marketingcloud.messages.Region']]/parameter[1]" name="managedType">Java.Lang.Object</attr>
-</metadata>
