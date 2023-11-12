@@ -29,7 +29,7 @@ using Com.Salesforce.Marketingcloud.Sfmcsdk;
 namespace xxxxx.Droid.MessagingServices
 {
     [Preserve(AllMembers = true)]
-    public class StartMCSdk : Java.Lang.Object, ISFMCSdkReadyListener
+    public class StartMCSdk : Java.Lang.Object, ISFMCSdkReadyListener, ILogListener
     {
         public void StartSdk()
         {
@@ -37,6 +37,7 @@ namespace xxxxx.Droid.MessagingServices
             {
                 // Initialize logging _before_ initializing the SDK to avoid losing valuable debugging information.
 #if DEBUG
+                SFMCSdk.SetLogging(LogLevel.Debug, this);
                 MarketingCloudSdk.LogLevel = MCLogListener.Verbose;
                 MarketingCloudSdk.SetLogListener(new MCWriteLogListener());
 #endif
@@ -72,7 +73,6 @@ namespace xxxxx.Droid.MessagingServices
                 SFMCSdk.Configure(MainApplication.Instance, builder);
                 SFMCSdk.RequestSdk(this);
 
-
                 var sdkListner = new MCSdkListner(MainApplication.Instance);
                 MarketingCloudSdk.Init(MainApplication.Instance, marketingCloudConfig, sdkListner);
 
@@ -85,8 +85,14 @@ namespace xxxxx.Droid.MessagingServices
 
         public void Ready(SFMCSdk sdk)
         {
-
         }
+
+        public void Out(LogLevel level, string tag, string message, Java.Lang.Throwable throwable)
+        {
+            LogInformation(tag, message);
+        }
+
+        void LogInformation(string methodName, object information) => Debug.WriteLine($"\nMethod: {methodName}\nInfo: {information}");
     }
 }
 
