@@ -1,17 +1,15 @@
 ﻿using Android.Content;
 using Android.Runtime;
 using Java.Interop;
-using Java.Util.Functions;
 using Kotlin;
 using Kotlin.Jvm.Functions;
 using System;
-using IFunction = Kotlin.IFunction;
 
 namespace Com.Salesforce.Marketingcloud.Sfmcsdk
 {
     public partial class SFMCSdk
     {
-        public static void Configure(Context context, object config, InitializationListener listener)
+        public static void Configure(Context context, SFMCSdkModuleConfig config, InitializationListener listener)
         {
             Configure(context, config, listener);
         }
@@ -19,9 +17,9 @@ namespace Com.Salesforce.Marketingcloud.Sfmcsdk
 
     public class InitializationListener : Java.Lang.Object, IFunction1, IFunction, IJavaObject, IJavaPeerable, IDisposable
     {
-        private readonly System.Action<object> OnInvoked;
+        private readonly System.Action<SFMCSdkInitializationStatus> OnInvoked;
 
-        public InitializationListener(System.Action<object> onInvoke)
+        public InitializationListener(System.Action<SFMCSdkInitializationStatus> onInvoke)
         {
             OnInvoked = onInvoke;
         }
@@ -30,7 +28,7 @@ namespace Com.Salesforce.Marketingcloud.Sfmcsdk
         {
             try
             {
-                object parameter = (object)objParameter;
+                SFMCSdkInitializationStatus parameter = (SFMCSdkInitializationStatus)objParameter;
                 OnInvoked?.Invoke(parameter);
             }
             catch (Java.Lang.Exception ex)

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.810.11
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMCiOS", "SFMCiOS\SFMCiOS.csproj", "{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMCDroid", "SFMCDroid\SFMCDroid.csproj", "{20368F48-C9CC-474D-9D1E-DDE77495B5A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMCSdkDroid", "SFMCSdkDroid\SFMCSdkDroid.csproj", "{20368F48-C9CC-474D-9D1E-DDE77495B5A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
