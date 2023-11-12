@@ -76,6 +76,9 @@
     <PackageReference Include="Xamarin.Kotlin.StdLib.Common">
       <Version>1.9.20</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Kotlin.StdLib.Jdk8">
+      <Version>1.9.20</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
