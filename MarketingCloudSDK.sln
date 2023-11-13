@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SFiOSSdk", "SFiOSSdk", "{57
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMCiOS", "SFiOSSdk\SFMCiOS\SFMCiOS.csproj", "{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMCDroid", "SFDroidSdk\SFMCDroid\SFMCDroid.csproj", "{F60FD9D1-4189-4C85-8F67-66D1676F6F0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F60FD9D1-4189-4C85-8F67-66D1676F6F0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F60FD9D1-4189-4C85-8F67-66D1676F6F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F60FD9D1-4189-4C85-8F67-66D1676F6F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F60FD9D1-4189-4C85-8F67-66D1676F6F0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,5 +41,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{20368F48-C9CC-474D-9D1E-DDE77495B5A5} = {E56E1885-A61C-4C76-A181-91F4BEB6C722}
 		{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12} = {57E2272B-0BC5-4DEF-BBBC-C1A4E59BEBEA}
+		{F60FD9D1-4189-4C85-8F67-66D1676F6F0C} = {E56E1885-A61C-4C76-A181-91F4BEB6C722}
 	EndGlobalSection
 EndGlobal
