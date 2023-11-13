@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.810.11
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMCiOS", "SFMCiOS\SFMCiOS.csproj", "{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SFDroidSdk", "SFDroidSdk", "{E56E1885-A61C-4C76-A181-91F4BEB6C722}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMCSdkDroid", "SFDroidSdk\SFMCSdkDroid\SFMCSdkDroid.csproj", "{20368F48-C9CC-474D-9D1E-DDE77495B5A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SFiOSSdk", "SFiOSSdk", "{57E2272B-0BC5-4DEF-BBBC-C1A4E59BEBEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFMCiOS", "SFiOSSdk\SFMCiOS\SFMCiOS.csproj", "{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,14 +17,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}.Release|Any CPU.Build.0 = Release|Any CPU
 		{20368F48-C9CC-474D-9D1E-DDE77495B5A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{20368F48-C9CC-474D-9D1E-DDE77495B5A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20368F48-C9CC-474D-9D1E-DDE77495B5A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20368F48-C9CC-474D-9D1E-DDE77495B5A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,5 +34,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{20368F48-C9CC-474D-9D1E-DDE77495B5A5} = {E56E1885-A61C-4C76-A181-91F4BEB6C722}
+		{ABA6AEB3-A8C3-49F5-BF1D-C9AE56D2FB12} = {57E2272B-0BC5-4DEF-BBBC-C1A4E59BEBEA}
 	EndGlobalSection
 EndGlobal
