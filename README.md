@@ -6,12 +6,14 @@
 
  In MainActivity
   ```
+  internal static MainActivity Instance { get; private set; }
   public override void OnCreate()
   {
     base.OnCreate();
 
 
-//Other code 
+//Other code
+  Instance = this;
    var startMarketingSdk = new StartMCSdk();
    startMarketingSdk.StartSdk();
  }
