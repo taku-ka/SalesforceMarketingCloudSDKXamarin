@@ -1,10 +1,10 @@
 # SalesforceMarketingCloudSDKXamarin
  marketingcloudsdk-8
  
- How to init 
- Droid:
+## How to init 
+## Droid:
 
- In MainActivity
+ ### In MainActivity
   ```
   internal static MainActivity Instance { get; private set; }
   public override void OnCreate()
@@ -19,7 +19,7 @@
  }
   ```
 
-StartMCSdk class
+### StartMCSdk class
   ```
 using System;
 using Android.Runtime;
@@ -103,7 +103,7 @@ namespace xxxxx.Droid.MessagingServices
 
 
  
- Write Logs: new MCWriteLogListener()
+###  Write Logs: new MCWriteLogListener()
 ```
 using System;
 using System.Diagnostics;
@@ -128,7 +128,7 @@ namespace xxxxx.Droid.MessagingServices.MCListener
 }
 
 ```
-new MCSdkListner()
+### new MCSdkListner()
 ```
 using System;
 using System.Threading.Tasks;
@@ -186,7 +186,7 @@ namespace xxxxx.Droid.MessagingServices
 }
 
 ```
-new MCReadyListener();
+### new MCReadyListener();
 ```
 using System;
 using Android.Runtime;
@@ -216,83 +216,123 @@ namespace xxxxx.Droid.MessagingServices.MCListener
 }
 ```
 
-iOS
+## iOS (Is still work in progress)
+### In AppDelegate
+
 ```
-public void MarketingSdk()
+public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
 {
-    try
+
+//Other Code
+ var startMarketingSDK = new StartMCSdk();
+ startMarketingSDK.MarketingSdk();
+}
+```
+
+```
+using Foundation;
+using System;
+using System.Diagnostics;
+using UIKit;
+using UserNotifications;
+using SFMCiOS;
+
+namespace xxxxx.iOS.MessagingServices
+{
+    [Preserve(AllMembers = true)]
+    public class StartMCSdk
     {
-        var appID = "xxxxxx-xxxx-xxx-xx-xxxxxx";
-        var accessToken = "xxxxxxx";
-        var appEndpoint = "https://mcxxxxxxxx.device.marketingcloudapis.com/";
-        var mid = "xxxxxx";
+        public void MarketingSdk()
+        {
+            try
+            {
+                var appID = "xxxxxx-xxxx-xxx-xx-xxxxxx";
+                var accessToken = "xxxxxxx";
+                var appEndpoint = "https://mcxxxxxxxx.device.marketingcloudapis.com/";
+                var mid = "xxxxxx";
+        
+                // Define features of MobilePush your app will use.
+                var inbox = true;
+                var location = false;
+                var pushAnalytics = true;
 
-        // Define features of MobilePush your app will use.
-        var inbox = true;
-        var location = false;
-        var pushAnalytics = true;
+#if DEBUG
+                SFMCSdk.SetLoggerWithLogLevel(SFMCSdkLogLevel.Debug, new SFMCSdkLogger());
+#endif
 
-        var configbuilder = new MarketingCloudSDKConfigBuilder()
-                    .SetApplicationId(appID)
+                // Use the Mobile Push Config Builder to configure the Mobile Push Module. This gives you the maximum flexibility in SDK configuration.
+                // The builder lets you configure the module parameters at runtime.
+                var mobilePushConfiguration = new PushConfigBuilder(appID)
                     .SetAccessToken(accessToken)
                     .SetMarketingCloudServerUrl(appEndpoint)
                     .SetMid(mid)
-                    .SetDelayRegistrationUntilContactKeyIsSet(true)
                     .SetInboxEnabled(inbox)
                     .SetLocationEnabled(location)
                     .SetAnalyticsEnabled(pushAnalytics)
-                    .Build();
+                    .Build;
 
-        var isSuccessful = MarketingCloudSDK.SharedInstance().ConfigureWithDictionary(configbuilder, out NSError configError);
 
-        if (isSuccessful)
-        {
-            MarketingCloudSDK.SharedInstance().SetDebugLoggingEnabled(true);
-            MarketingCloudSDK.SharedInstance().SetURLHandlingDelegate(new UrlHandler());
-            MarketingCloudSDK.SharedInstance().StartWatchingLocation();
+                // Set the completion handler to take action when module initialization is completed. The result indicates if initialization was sucesfull or not.
+                // Seting the completion handler is optional.
+                Action<SFMCSdkOperationResult> completionHandler = (result) =>
+                {
+                    if (result == SFMCSdkOperationResult.Success)
+                    {
+                        LogInformation("Success", result);
+                    }
+                    else if (result == SFMCSdkOperationResult.Error)
+                    {
+                        LogInformation("Error", result);
+                    }
+                    else if (result == SFMCSdkOperationResult.Cancelled)
+                    {
+                        LogInformation("Cancelled", result);
+                    }
+                    else if (result == SFMCSdkOperationResult.Timeout)
+                    {
+                        LogInformation("Timeout", result);
+                    }
+                };
 
-            string sdkstate = MarketingCloudSDK.SharedInstance().GetSDKState;
+                //// Once you've created the mobile push configuration, intialize the SDK.
+                SFMCSdk.InitializeSdk(new SFMCSdkConfigBuilder().SetPushWithConfig(mobilePushConfiguration, completionHandler).Build);
 
-            UserSettings.MCSdkInitialized = false;
+                if (UIApplication.SharedApplication.BackgroundRefreshStatus == UIBackgroundRefreshStatus.Available)
+                {
+                    Debug.WriteLine("Enabling background refresh");
+                    UIApplication.SharedApplication.SetMinimumBackgroundFetchInterval(UIApplication.BackgroundFetchIntervalMinimum);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
         }
-        else
-        {
-            Debug.WriteLine("Initialisation Unsuccessful  " + configError);
-        }
 
-        if (UIApplication.SharedApplication.BackgroundRefreshStatus == UIBackgroundRefreshStatus.Available)
-        {
-            Debug.WriteLine("Enabling background refresh");
-            UIApplication.SharedApplication.SetMinimumBackgroundFetchInterval(UIApplication.BackgroundFetchIntervalMinimum);
-        }
-    }
-    catch (Exception ex)
-    {
-        Debug.WriteLine(ex);
+        void LogInformation(string methodName, object information) => Debug.WriteLine($"\nResult: {methodName}\nInfo: {information}");
     }
 }
 ```
-new UrlHandler();
+### new SFMCSdkLogger();
 
 ```
-public class UrlHandler : MarketingCloudSDKURLHandlingDelegate
+using System;
+using System.Diagnostics;
+using SFMCiOS;
+
+namespace xxxxx.iOS.MessagingServices
 {
-    public override void Type(NSUrl url, string type)
+    public class SFMCSdkLogger : SFMCSdkLogOutputter
     {
-        Debug.WriteLine(string.Format("HandleURL: {0} {1}", type, url));
+        public override void OutWithLevel(SFMCSdkLogLevel level, string subsystem, SFMCSdkLoggerCategory category, string message)
+        {
+            LogInformation(subsystem, message);
+        }
 
-        if (UIApplication.SharedApplication.CanOpenUrl(url))
-        {
-            Debug.WriteLine(string.Format("Can open: " + url));
-            var options = new NSDictionary();
-            UIApplication.SharedApplication.OpenUrl(url, options, (success) => Debug.WriteLine("OpenURL: " + success));
-        }
-        else
-        {
-            Debug.WriteLine("Cannot open URL: " + url);
-        }
+        void LogInformation(string methodName, object information) => Debug.WriteLine($"\nSubsystem: {methodName}\nInfo: {information}");
     }
 }
+
 ```
 
 
