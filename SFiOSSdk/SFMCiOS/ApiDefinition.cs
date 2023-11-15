@@ -521,11 +521,11 @@ namespace SFMCiOS
     {
         // -(SFMCSdkConfigBuilder * _Nonnull)setCdpWithConfig:(id<SFMCSdkModuleConfig> _Nonnull)config onCompletion:(void (^ _Nullable)(enum SFMCSdkOperationResult))onCompletion __attribute__((warn_unused_result("")));
         [Export("setCdpWithConfig:onCompletion:")]
-        SFMCSdkConfigBuilder SetCdpWithConfig(SFMCSdkModuleConfig config, [NullAllowed] Action<SFMCSdkOperationResult> onCompletion);
+        SFMCSdkConfigBuilder SetCdpWithConfig(ISFMCSdkModuleConfig config, [NullAllowed] Action<SFMCSdkOperationResult> onCompletion);
 
         // -(SFMCSdkConfigBuilder * _Nonnull)setPushWithConfig:(id<SFMCSdkModuleConfig> _Nonnull)config onCompletion:(void (^ _Nullable)(enum SFMCSdkOperationResult))onCompletion __attribute__((warn_unused_result("")));
         [Export("setPushWithConfig:onCompletion:")]
-        SFMCSdkConfigBuilder SetPushWithConfig(SFMCSdkModuleConfig config, [NullAllowed] Action<SFMCSdkOperationResult> onCompletion);
+        SFMCSdkConfigBuilder SetPushWithConfig(ISFMCSdkModuleConfig config, [NullAllowed] Action<SFMCSdkOperationResult> onCompletion);
 
         // -(SFMCSdkConfig * _Nonnull)build __attribute__((warn_unused_result("")));
         [Export("build")]
@@ -3002,7 +3002,7 @@ namespace SFMCiOS
     // @interface PushConfig : NSObject <SFMCSdkModuleConfig>
     [BaseType(typeof(NSObject), Name = "_TtC17MarketingCloudSDK10PushConfig")]
     [DisableDefaultCtor]
-    interface PushConfig : ISFMCSdkModuleConfig
+    interface PushConfig : SFMCSdkModuleConfig
     {
         // @property (nonatomic) BOOL trackScreens;
         [Export("trackScreens")]
