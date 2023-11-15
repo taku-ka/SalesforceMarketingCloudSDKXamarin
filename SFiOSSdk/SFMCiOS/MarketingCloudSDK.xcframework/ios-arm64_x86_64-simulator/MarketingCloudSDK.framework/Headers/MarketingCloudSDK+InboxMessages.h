@@ -7,7 +7,7 @@
 //
 
 #import <MarketingCloudSDK/MarketingCloudSDK.h>
-#import <SFMCSDK/SFMCSDK.h>
+#import <SFMCSDK/SFMCSdk.h>
 
 /** key used in notification payload to determine an inbox message's content  */
 FOUNDATION_EXTERN NSString * _Nonnull const MarketingCloudSDKInboxMessageKey;
@@ -182,10 +182,22 @@ FOUNDATION_EXTERN NSString * _Nonnull const MarketingCloudSDKInboxMessageKey;
 - (BOOL) sfmc_markAllMessagesDeleted;
 
 /**
- Reload and refresh Inbox messages from the MarketingCloud server.
+ Reload and refresh Inbox messages from the Marketing Cloud server.
  
- Note: The underlying request to the server will be throttled such that it will execute at most every 60 seconds. If the method has been called less than 60s after the preceeding method call, NO will be returned and the request will not be made. If NO is returned, it is suggested that any UI used to reflect the refresh operation is updated (pull to refresh indicators, loading spinners, etc.).
- 
+Note: The underlying request to the server will be throttled such that it will execute at most every 60 seconds. If the method has been called less than 60 seconds after the preceeding method call, NO will be returned and the request will not be made. If NO is returned, best practice is that any UI used to reflect the refresh operation is updated (pull to refresh indicators, loading spinners, etc.). 
+
+DDoS Protection
+
+The SDK has several built in mechanisms to protect Marketing Cloud servers and services. For message GET routes, we allow at most one manual refresh request per minute. This prevents bad application implementations or mobile app users from calling refresh over and over when there will be no new data available.
+
+Within the SDK and it’s logging, this presents a 429 - Too Many Requests log statement.
+
+Throttling
+
+To protect the workload and ensure optimal performance, the Inbox Message routes may throttle incoming requests. This throttling is based on adaptive logic, which operates as a percentage of traffic depending on the current load. The system is designed to automatically determine when throttling is necessary or when it can be reduced.
+
+During periods of traffic throttling, some customer requests may receive a 429 - Too Many Requests response. This will log a 429 response within the SDK. The Marketing Cloud has considerable server-side logic to monitor and adjust this throttling mechanism.
+
  This method will cause notifications to be posted to NSNotificationCenter: 
  
  - SFMCInboxMessagesRefreshCompleteNotification: posted when the refresh process has completed

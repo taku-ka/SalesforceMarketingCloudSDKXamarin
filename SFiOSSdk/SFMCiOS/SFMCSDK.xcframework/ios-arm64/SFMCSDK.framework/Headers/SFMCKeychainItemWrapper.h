@@ -62,40 +62,6 @@ extern NSString * _Nullable const kSFKeychainItemExceptionErrorCodeKey;
 @interface SFMCKeychainItemWrapper : NSObject
 
 /**
- Returns the accessible attribute used to store this keychain item.
- */
-@property (nonatomic, readonly, nullable) CFTypeRef accessibleAttribute;
-
-/**
- @return CFTypeRef which has any one of below values
- /// kSecAttrAccessibleWhenUnlocked
- ///kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly
- ///kSecAttrAccessibleWhenUnlockedThisDeviceOnly
- ///kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
- ///kSecAttrAccessibleAlwaysThisDeviceOnly
- */
-+ (CFTypeRef _Nullable)accessibleAttribute;
-
-/**
- @return Indicates whether keychain access errors cause a fatal exception.  Default is YES.
- */
-+ (BOOL)keychainAccessErrorsAreFatal;
-
-/**
- Sets whether or not keychain access errors cause a fatal exception.
- @param errorsAreFatal Whether keychain access errors should be fatal.
- */
-+ (void)setKeychainAccessErrorsAreFatal:(BOOL)errorsAreFatal;
-
-/**
- Sets the accessible attribute used by this keychain item wrapper class.
- If the previous attribute value is different, this method will trigger
- an update of all the items in the keychain.
- @param accessibleAttribute The accessible attribute for this keychain item wrapper class.
- */
-+ (void)setAccessibleAttribute:(nullable CFTypeRef)accessibleAttribute;
-
-/**
  Factory method to hand out an SFKeychainItemWrapper object with the given identifier and account.
  Note that, for any given combination of identifier and account, only one object will be created
  at runtime.  Subsequent requests will return the same object.
@@ -141,5 +107,9 @@ extern NSString * _Nullable const kSFKeychainItemExceptionErrorCodeKey;
  @return The string version of the error code.
  */
 + (nullable NSString *)keychainErrorCodeString:(OSStatus)errorCode;
+
+
+/// :nodoc:
++ (BOOL)updateKeychainAccessibleAttribute:(CFTypeRef _Nonnull)accessibleAttributeToUpdate;
 
 @end

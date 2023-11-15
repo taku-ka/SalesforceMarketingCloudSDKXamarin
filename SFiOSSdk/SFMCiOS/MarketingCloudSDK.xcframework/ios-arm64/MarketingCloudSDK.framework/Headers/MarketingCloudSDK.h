@@ -19,6 +19,7 @@
 #import <MarketingCloudSDK/MarketingCloudSDK+Constants.h>
 #import <MarketingCloudSDK/MarketingCloudSDK+URLHandling.h>
 #import <MarketingCloudSDK/MarketingCloudSDK+Events.h>
+#import <MarketingCloudSDK/MarketingCloudSDK+FeatureToggle.h>
 #import <MarketingCloudSDK/MarketingCloudSDKConfigBuilder.h>
 #if __has_include("MarketingCloudSDK/MarketingCloudSDK-Swift.h")
 #import <MarketingCloudSDK/MarketingCloudSDK-Swift.h>

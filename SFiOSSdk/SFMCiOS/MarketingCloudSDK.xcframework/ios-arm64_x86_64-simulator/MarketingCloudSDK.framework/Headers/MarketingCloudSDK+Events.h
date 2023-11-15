@@ -8,7 +8,7 @@
 
 #import <MarketingCloudSDK/MarketingCloudSDK.h>
 #import <MarketingCloudSDK/SFMCEvent.h>
-#import <SFMCSDK/SFMCSDK.h>
+#import <SFMCSDK/SFMCSdk.h>
 /**
  Supporting protocol for In-App Messaging
  

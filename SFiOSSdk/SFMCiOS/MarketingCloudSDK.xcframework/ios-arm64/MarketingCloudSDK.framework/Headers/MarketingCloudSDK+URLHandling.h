@@ -7,7 +7,7 @@
 //
 
 #import <MarketingCloudSDK/MarketingCloudSDK.h>
-#import <SFMCSDK/SFMCSDK.h>
+#import <SFMCSDK/SFMCSdk.h>
 
 /** These type constants are used by sfmc_handleURL:type: to indicate the MarketingCloud source of the URL
  */
