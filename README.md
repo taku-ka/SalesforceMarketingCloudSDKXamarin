@@ -278,19 +278,23 @@ namespace xxxxx.iOS.MessagingServices
                 {
                     if (result == SFMCSdkOperationResult.Success)
                     {
-                        LogInformation("Success", result);
+                        LogInformation("CompletionHandler", result);
+
+                        SFMCSdk.Mp.PushEnabled = true;
+                        SFMCSdk.Mp.SetURLHandlingDelegate(new URLHandlingDelegate());
+
                     }
                     else if (result == SFMCSdkOperationResult.Error)
                     {
-                        LogInformation("Error", result);
+                        LogInformation("CompletionHandler", result);
                     }
                     else if (result == SFMCSdkOperationResult.Cancelled)
                     {
-                        LogInformation("Cancelled", result);
+                        LogInformation("CompletionHandler", result);
                     }
                     else if (result == SFMCSdkOperationResult.Timeout)
                     {
-                        LogInformation("Timeout", result);
+                        LogInformation("CompletionHandler", result);
                     }
                 };
 
@@ -333,6 +337,39 @@ namespace xxxxx.iOS.MessagingServices
     }
 }
 
+```
+
+### new URLHandlingDelegate();
+
+```
+using System;
+using System.Diagnostics;
+using Foundation;
+using SFMCiOS;
+using UIKit;
+
+namespace xxxxx.iOS.MessagingServices
+{
+    public class URLHandlingDelegate : SFMCSdkURLHandlingDelegate
+    {
+        public override void Type(NSUrl url, string type)
+        {
+            Debug.WriteLine(string.Format("HandleURL: {0} {1}", type, url));
+
+            if (UIApplication.SharedApplication.CanOpenUrl(url))
+            {
+                Debug.WriteLine(string.Format("Can open: " + url));
+                var options = new NSDictionary();
+                UIApplication.SharedApplication.OpenUrl(url, options, (success) => Debug.WriteLine("OpenURL: " + success));
+            }
+            else
+            {
+                Debug.WriteLine("Cannot open URL: " + url);
+            }
+        }
+
+    }
+}
 ```
 
 
