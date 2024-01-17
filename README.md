@@ -216,7 +216,7 @@ namespace xxxxx.Droid.MessagingServices.MCListener
 }
 ```
 
-## iOS (Is still work in progress)
+## iOS
 ### In AppDelegate
 
 ```
@@ -227,6 +227,42 @@ public override bool FinishedLaunching(UIApplication application, NSDictionary l
  var startMarketingSDK = new StartMCSdk();
  startMarketingSDK.MarketingSdk();
 }
+
+
+[Export("application:didRegisterForRemoteNotificationsWithDeviceToken:")]
+public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+{
+    Messaging.SharedInstance.ApnsToken = deviceToken;
+    SFMCSdk.Mp.SetDeviceToken(deviceToken);
+}
+
+[Export("userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:")]
+public void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
+{
+    MobilePushSDK.SharedInstance().Sfmc_setNotificationRequest(response.Notification.Request);
+    //SFMCSdk.Mp.NotificationRequest(response.Notification.Request);
+    completionHandler?.Invoke();
+}
+
+
+// iOS >=10, Fires when application recieves a notification while in the foreground
+[Export("userNotificationCenter:willPresentNotification:withCompletionHandler:")]
+public static void WillPresentNotification(UNUserNotificationCenter center, UNNotification notification, Action<UNNotificationPresentationOptions> completionHandler)
+{
+   MobilePushSDK.SharedInstance().Sfmc_setNotificationRequest(notification.Request);
+}
+
+// iOS <=9, Fires when application recieves a notification while in the foreground
+[Export("application:didReceiveRemoteNotification:fetchCompletionHandler:")]
+public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
+{
+    var request = UNNotificationRequest.FromIdentifier(new NSUuid().ToString(), new UNMutableNotificationContent { UserInfo = userInfo }, null);
+    MobilePushSDK.SharedInstance().Sfmc_setNotificationUserInfo(userInfo);
+    completionHandler.Invoke(UIBackgroundFetchResult.NewData);
+}
+
+
+
 ```
 
 ```
